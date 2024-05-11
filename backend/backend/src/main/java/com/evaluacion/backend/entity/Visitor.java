@@ -25,11 +25,11 @@ public class Visitor {
     private String hour;
 
     @Column(name = "is_blocked")
-    private Boolean isBlocked;
+    private Boolean isBlocked = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    private String comment;
+    private String comment = "";
 }

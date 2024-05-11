@@ -8,7 +8,7 @@ public class VisitorRecordDTO {
     private Long id;
     private String ip;
     private Integer totalVisits;
-    private Boolean isBlocked = false;
+    private Boolean isBlocked;
     private Category category;
     private String comment;
 }

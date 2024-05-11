@@ -1,33 +1,38 @@
 import { useEffect, useState } from "react";
 import { getVisitor, postVisitor } from "./services/index";
 import { Visitor } from "./interfaces/visitor.interface";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Record from "./pages/Record";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Category from "./pages/Category";
+import { Home, Record, Category } from "./pages/index"
 
 function App() {
 	const [visitor, setVisitor] = useState<Visitor>({
+		id: 0,
 		ip: "",
 		date: "",
 		hour: "",
 	});
 
 	useEffect(() => {
-		(async () => {
-			const newVisitor: Visitor = await getVisitor();
-			setVisitor(newVisitor);
-		})();
+		fetchVisitorData();
 	}, []);
 
 	useEffect(() => {
-		postVisitor(visitor);
+		if (visitor.ip && visitor.date && visitor.hour) {
+			postVisitor(visitor);
+		}
 	}, [visitor]);
+
+	const fetchVisitorData = async () => {
+		const newVisitor: Visitor = await getVisitor();
+		setVisitor(newVisitor);
+	};
+
 	return (
 		<>
 			<NavBar />
 			<Routes>
+				<Route path="/" element={<Navigate replace to="/home" />} />
 				<Route path="/home" element={<Home />} />
 				<Route path="/record" element={<Record />} />
 				<Route path="/category" element={<Category />} />

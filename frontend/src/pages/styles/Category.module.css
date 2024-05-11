@@ -1,0 +1,12 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFF9D0;
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+
+.container table {
+    height: fit-content;
+}

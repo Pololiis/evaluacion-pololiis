@@ -1,0 +1,8 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    background-color: #ECCA9C;
+    height: 5vh;
+    font-size: 1.2rem;
+}
