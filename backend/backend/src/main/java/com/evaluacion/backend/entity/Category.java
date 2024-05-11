@@ -13,9 +13,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Agregar anotación para campo único
+    @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "category_id") // corroborar
+    @OneToMany(mappedBy = "category")
     private List<Visitor> visitors;
 }
