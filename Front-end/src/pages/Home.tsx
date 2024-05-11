@@ -1,5 +1,11 @@
+import IpList from "../components/VisitorsList";
+
 const home = () => {
-	return <div>home</div>;
+	return (
+		<>
+			<IpList/>
+		</>
+	)
 };
 
 export default home;

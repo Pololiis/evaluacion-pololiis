@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Record from "./pages/Record";
 import NavBar from "./components/NavBar";
+import Category from "./pages/Category";
 
 function App() {
 	const [visitor, setVisitor] = useState<Visitor>({
@@ -12,11 +13,12 @@ function App() {
 		date: "",
 		hour: "",
 	});
-	
 
 	useEffect(() => {
-		const newVisitor: Visitor = getVisitor();
-		setVisitor(newVisitor);
+		(async () => {
+			const newVisitor: Visitor = await getVisitor();
+			setVisitor(newVisitor);
+		})();
 	}, []);
 
 	useEffect(() => {
@@ -24,10 +26,11 @@ function App() {
 	}, [visitor]);
 	return (
 		<>
-			<NavBar/>
+			<NavBar />
 			<Routes>
-				<Route path="/home" element={<Home/>} />
-				<Route path="/record" element={<Record/>} />
+				<Route path="/home" element={<Home />} />
+				<Route path="/record" element={<Record />} />
+				<Route path="/category" element={<Category />} />
 			</Routes>
 		</>
 	);

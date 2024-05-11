@@ -1,8 +1,7 @@
 import axios from "axios";
 import { Visitor } from "../interfaces/visitor.interface";
 
-export const getVisitor = async (): Promise<Visitor|undefined> => {
-	try {
+export const getVisitor = async (): Promise<Visitor> => {
 		const response = await axios.get("https://geolocation-db.com/json/");
 		const { IPv4 } = response.data;
 
@@ -13,9 +12,4 @@ export const getVisitor = async (): Promise<Visitor|undefined> => {
 		};
 
 		return newVisitor;
-
-	} catch (error) {
-		console.error("Error al obtener la información de la IP:", error);
-		return undefined;
-	}
 };
